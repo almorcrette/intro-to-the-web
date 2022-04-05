@@ -17,6 +17,17 @@ get '/contact' do
   "I don't want to be contacted"
 end
 
-get '/cat' do
-  "<html><div style='border: 5px dashed red'><img src='https://imgur.com/jFaSxym.png' alt='Picture of a cute kitten'></div></html>"
+get '/random-cat' do
+  @name = ["Amigo", "Misty", "Almond"].sample
+  erb(:index)
+end
+
+get '/cat-form' do
+  erb :cat_form
+end
+
+post '/named-cat' do
+  p params
+  @name = params[:name]
+  erb(:named_cat) 
 end
